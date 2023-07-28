@@ -26,7 +26,7 @@ class Rule extends PHPWriter {
 	private const ARGUMENT_RX = '@
 	( [^=]+ )    # Name
 	=            # Seperator
-	( [^=,]+ )   # Variable
+	"([^"]*)"    # Variable
 	(,|$)
 	@x';
 
@@ -93,7 +93,7 @@ class Rule extends PHPWriter {
 			\preg_match_all(self::ARGUMENT_RX, $specmatch['arguments'], $arguments, \PREG_SET_ORDER);
 
 			foreach ($arguments as $argument) {
-				$this->arguments[\trim($argument[1])] = \trim($argument[2]);
+				$this->arguments[\trim($argument[1])] = $argument[2];
 			}
 		}
 

@@ -18,8 +18,8 @@ namespace hafriedlander\Peg\Parser;
  */
 class Packrat extends Basic {
 
-	private array $packres = [];
-	private array $packpos = [];
+	protected array $packres = [];
+	protected array $packpos = [];
 
 	function packhas($key, $pos) {
 		return !empty($this->packres[$key][$pos]);
